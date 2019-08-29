@@ -63,7 +63,7 @@ function getImageDimensions(file) {
 
 
 async function HTTPCall_Actual(){
-	await axios.get('/genqr', {
+	await axios.get('http://139.59.9.46:8080/genqr', {
 		params: {
 		  mob: document.getElementById("cnmob").value
 		}
@@ -111,22 +111,13 @@ async function HTTPCall(){
 	let enid = encrypt('key-12142314521`24641','dgsadfsdsha6786679shabdj');
 	let enmid = encrypt('key-12142314521`24641','bvfsuybds32562bchdsb8327');
 
-	await axios.get('http://139.59.9.46:8080/qrcode/', {
+	await axios.get('http://139.59.9.46:8080/genqr/', {
 		params: {
-		  data: JSON.stringify({
-				t:"#cncontact#",
-				x:encrypt('edS4g^38Vgl3Ghj#gh2k','_dQOttKPI3YrtAglb6lIp'),
-				a:encrypt('eS4g^39Vgl3Ghj1#gh2k','_dQOttKPI3YrtAglb6lIp'),
-				n:'XYZ abc',
-				b:'XYZ abc',
-				is:'IN',
-				mo:'8015154024',
-				d:new Date().getTime()
-			}),
-			qrsize: '7'
+		  mob: document.getElementById("cnmob").value
 		}
 	})
 	.then(function (response) {
+		console.log(
 		getImageDimensions(response.data.t).then((dim1)=>{
 			getImageDimensions(response.data.q).then((dim2)=>{
 				let img = resize(response.data.q)
