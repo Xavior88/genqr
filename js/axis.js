@@ -117,7 +117,6 @@ async function HTTPCall(){
 		}
 	})
 	.then(function (response) {
-		console.log(
 		getImageDimensions(response.data.t).then((dim1)=>{
 			getImageDimensions(response.data.q).then((dim2)=>{
 				let img = resize(response.data.q)
