@@ -1,0 +1,146 @@
+
+
+
+<html>
+        <title>New Template</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script type="text/javascript" src="/socketcluster.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-firestore.js"></script>
+        <script type="text/javascript" src="./js/axis.js"></script>
+        <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://unpkg.com/merge-images"></script> -->
+        <style>
+        ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: black;
+            opacity: 1; /* Firefox */
+        }
+        
+        :-ms-input-placeholder { /* Internet Explorer 10-11 */
+            color: black;
+        }
+        
+        ::-ms-input-placeholder { /* Microsoft Edge */
+            color: black;
+        }
+        
+        html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+        .mytext{
+            border:0;padding:10px;background:whitesmoke;
+        }
+        .text{
+            width:75%;display:flex;flex-direction:column;
+        }
+        .text > p:first-of-type{
+            width:100%;margin-top:0;margin-bottom:auto;line-height: 13px;font-size: 12px;
+        }
+        .text > p:last-of-type{
+            width:100%;text-align:right;color:SlateGray;margin-bottom:-7px;margin-top:auto;
+        }
+        .text-l{
+            float:left;padding-right:10px;
+        }        
+        .text-r{
+            float:right;padding-left:10px;
+        }
+        .avatar{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            width:25%;
+            float:left;
+            padding-right:10px;
+        }
+        .macro{
+            margin-top:5px;width:85%;border-radius:5px;padding:5px;display:flex;
+        }
+        .msj-rta{
+            float:right;background:MediumTurquoise;
+        }
+        .msj{
+            float:left;background:LightSkyBlue;
+        }
+        .frame{
+            background:#e0e0de;
+            height:450px;
+            overflow:hidden;
+            padding:0;
+        }
+        .frame > div:last-of-type{
+            position:absolute;bottom:5px;width:100%;display:flex;
+        }
+        ul {
+            width:100%;
+            list-style-type: none;
+            padding:18px;
+            position:absolute;
+            bottom:32px;
+            display:flex;
+            flex-direction: column;
+        
+        }
+        .msj:before{
+            width: 0;
+            height: 0;
+            content:"";
+            top:-5px;
+            left:-14px;
+            position:relative;
+            border-style: solid;
+            border-width: 0 13px 13px 0;
+            border-color: LightSkyBlue LightSkyBlue transparent transparent;            
+        }
+        .msj-rta:after{
+            width: 0;
+            height: 0;
+            content:"";
+            top:-5px;
+            float:right;
+        
+            position:relative;
+            border-style: solid;
+            border-width: 0 0 13px 13px;
+            border-color: MediumTurquoise transparent transparent MediumTurquoise;           
+        }  
+        input:focus{
+            outline: none;
+        }        
+        ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: #d4d4d4;
+        }
+        ::-moz-placeholder { /* Firefox 19+ */
+            color: #d4d4d4;
+        }
+        :-ms-input-placeholder { /* IE 10+ */
+            color: #d4d4d4;
+        }
+        :-moz-placeholder { /* Firefox 18- */
+            color: #d4d4d4;
+        }  
+        </style>
+    <body class="w3-light-1grey">
+        <div class="w3-padding-64">
+        <div class="w3-row">
+        <div class="w3-padding w3-third">
+            <input class="w3-margin w3-input" type="text" placeholder="Enter 10 digit mobile number" size="15">
+            <button class="w3-round-large w3-btn w3-right w3-red w3-margin-top" onclick="HTTPCall()">Generate</button>
+        </div>
+        <div id='qrcodediv' class="w3-padding">
+                <!-- <img id='qrcode' src="" alt="qrcode" style="visibility:hidden"> -->
+                <img id='qrcode' class="w3-mobile w3-round w3-card w3-padding" src="" alt="qrcode" style="visibility:hidden" >
+                <a href="#" onclick="prepHref(this)" download="CleNet_QRCode.png">Download</a>
+        </div>
+        <script type="text/javascript">
+            function prepHref(linkElement) {
+                    var myDiv = document.getElementById('qrcodediv');
+                    var myImage = myDiv.children[0];
+                    linkElement.href = myImage.src;
+            }
+        </script>
+    </body>
+</html>
+        
