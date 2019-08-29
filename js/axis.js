@@ -63,7 +63,7 @@ function getImageDimensions(file) {
 
 
 async function HTTPCall_Actual(){
-	await axios.get('https://sc.clenet.tech/genqr', {
+	await axios.get('http://139.59.9.46:8080/genqr', {
 		params: {
 		  mob: document.getElementById("cnmob").value
 		}
