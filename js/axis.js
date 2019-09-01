@@ -63,6 +63,7 @@ function getImageDimensions(file) {
 
 
 async function HTTPCall_Actual(){
+	document.getElementById("qrcodediv").style.visibility = 'hidden';
 	await axios.get('https://sc.clenet.tech/genqr', {
 		params: {
 		  mob: document.getElementById("cnmob").value
@@ -98,7 +99,7 @@ async function HTTPCall_Actual(){
 
 
 
-
+/*
 
 
 
@@ -183,3 +184,4 @@ function encrypt(key, data) { //https://github.com/BhavanPatel/react-native-simp
   data = this.xorEncrypt(key, data);
   return this.b64Encode(data);
 }
+*/
