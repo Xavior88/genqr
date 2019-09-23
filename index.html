@@ -115,7 +115,7 @@
             color: #d4d4d4;
         }  
         </style>
-    <body class="w3-light-1grey">
+    <body class="w3-light-1grey" onload="checkUrlParam()">
         <div class="w3-padding-64">
         <div class="w3-row">
         <div class="w3-padding w3-third">
@@ -134,6 +134,15 @@
                     var myDiv = document.getElementById('qrcodediv');
                     var myImage = myDiv.children[0];
                     linkElement.href = myImage.src;
+            }
+            function checkUrlParam(){
+                if(window.location.href.indexOf('?mob=')>-1){
+                  let m = window.location.href.split('?mob=')[1];
+                  if(m && parseInt(m)){
+                        document.getElementById("cnmob").value = parseInt(m);
+                        HTTPCall_Actual();
+                  }
+                }
             }
         </script>
     </body>
