@@ -13,15 +13,6 @@ for (index = 0; index < scripts.length; ++index) {
     document.getElementsByTagName("head")[0].appendChild(script);
 }
 
-if(window.location.href.indexOf('?mob=')>-1){
-  let m = window.location.href.split('?mob=')[1];
-  if(m && parseInt(m)){
-	document.getElementById("cnmob").value = parseInt(m);
-	HTTPCall_Actual();
-  }
-}
-
-
 function resize (base64, maxWidth, maxHeight){
 	// Max size for thumbnail
 	if(typeof(maxWidth) === 'undefined')  maxWidth = 420;
