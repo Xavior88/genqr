@@ -1,157 +1,226 @@
-
-
-
 <html>
-        <title>Generate QR</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <script type="text/javascript" src="./js/axis.js"></script>
-        <style>
-        ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-            color: black;
-            opacity: 1; /* Firefox */
-        }
-        
-        :-ms-input-placeholder { /* Internet Explorer 10-11 */
-            color: black;
-        }
-        
-        ::-ms-input-placeholder { /* Microsoft Edge */
-            color: black;
-        }
-        
-        html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
-        .mytext{
-            border:0;padding:10px;background:whitesmoke;
-        }
-        .text{
-            width:75%;display:flex;flex-direction:column;
-        }
-        .text > p:first-of-type{
-            width:100%;margin-top:0;margin-bottom:auto;line-height: 13px;font-size: 12px;
-        }
-        .text > p:last-of-type{
-            width:100%;text-align:right;color:SlateGray;margin-bottom:-7px;margin-top:auto;
-        }
-        .text-l{
-            float:left;padding-right:10px;
-        }        
-        .text-r{
-            float:right;padding-left:10px;
-        }
-        .avatar{
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            width:25%;
-            float:left;
-            padding-right:10px;
-        }
-        .macro{
-            margin-top:5px;width:85%;border-radius:5px;padding:5px;display:flex;
-        }
-        .msj-rta{
-            float:right;background:MediumTurquoise;
-        }
-        .msj{
-            float:left;background:LightSkyBlue;
-        }
-        .frame{
-            background:#e0e0de;
-            height:450px;
-            overflow:hidden;
-            padding:0;
-        }
-        .frame > div:last-of-type{
-            position:absolute;bottom:5px;width:100%;display:flex;
-        }
-        ul {
-            width:100%;
-            list-style-type: none;
-            padding:18px;
-            position:absolute;
-            bottom:32px;
-            display:flex;
-            flex-direction: column;
-        
-        }
-        .msj:before{
-            width: 0;
-            height: 0;
-            content:"";
-            top:-5px;
-            left:-14px;
-            position:relative;
-            border-style: solid;
-            border-width: 0 13px 13px 0;
-            border-color: LightSkyBlue LightSkyBlue transparent transparent;            
-        }
-        .msj-rta:after{
-            width: 0;
-            height: 0;
-            content:"";
-            top:-5px;
-            float:right;
-        
-            position:relative;
-            border-style: solid;
-            border-width: 0 0 13px 13px;
-            border-color: MediumTurquoise transparent transparent MediumTurquoise;           
-        }  
-        input:focus{
-            outline: none;
-        }        
-        ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-            color: #d4d4d4;
-        }
-        ::-moz-placeholder { /* Firefox 19+ */
-            color: #d4d4d4;
-        }
-        :-ms-input-placeholder { /* IE 10+ */
-            color: #d4d4d4;
-        }
-        :-moz-placeholder { /* Firefox 18- */
-            color: #d4d4d4;
-        }  
-        </style>
-    <body class="w3-light-1grey" onload="checkUrlParam()">
-        <div class="w3-padding-64">
-        <div class="w3-row">
-        <div class="w3-padding w3-third">
-            <input id="cnmob" class="w3-margin w3-input" type="text" placeholder="Enter 10 digit mobile number" size="15">
-            <button class="w3-round-large w3-btn w3-right w3-red w3-margin-top" onclick="HTTPCall_Actual()">Generate</button>
+<title>Generate QR</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script type="text/javascript" src="./js/axis.js"></script>
+<style>
+    ::placeholder {
+        /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: black;
+        opacity: 1;
+        /* Firefox */
+    }
+
+    :-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        color: black;
+    }
+
+    ::-ms-input-placeholder {
+        /* Microsoft Edge */
+        color: black;
+    }
+
+    html,
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Roboto", sans-serif
+    }
+
+    .mytext {
+        border: 0;
+        padding: 10px;
+        background: whitesmoke;
+    }
+
+    .text {
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .text>p:first-of-type {
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: auto;
+        line-height: 13px;
+        font-size: 12px;
+    }
+
+    .text>p:last-of-type {
+        width: 100%;
+        text-align: right;
+        color: SlateGray;
+        margin-bottom: -7px;
+        margin-top: auto;
+    }
+
+    .text-l {
+        float: left;
+        padding-right: 10px;
+    }
+
+    .text-r {
+        float: right;
+        padding-left: 10px;
+    }
+
+    .avatar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25%;
+        float: left;
+        padding-right: 10px;
+    }
+
+    .macro {
+        margin-top: 5px;
+        width: 85%;
+        border-radius: 5px;
+        padding: 5px;
+        display: flex;
+    }
+
+    .msj-rta {
+        float: right;
+        background: MediumTurquoise;
+    }
+
+    .msj {
+        float: left;
+        background: LightSkyBlue;
+    }
+
+    .frame {
+        background: #e0e0de;
+        height: 450px;
+        overflow: hidden;
+        padding: 0;
+    }
+
+    .frame>div:last-of-type {
+        position: absolute;
+        bottom: 5px;
+        width: 100%;
+        display: flex;
+    }
+
+    ul {
+        width: 100%;
+        list-style-type: none;
+        padding: 18px;
+        position: absolute;
+        bottom: 32px;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .msj:before {
+        width: 0;
+        height: 0;
+        content: "";
+        top: -5px;
+        left: -14px;
+        position: relative;
+        border-style: solid;
+        border-width: 0 13px 13px 0;
+        border-color: LightSkyBlue LightSkyBlue transparent transparent;
+    }
+
+    .msj-rta:after {
+        width: 0;
+        height: 0;
+        content: "";
+        top: -5px;
+        float: right;
+
+        position: relative;
+        border-style: solid;
+        border-width: 0 0 13px 13px;
+        border-color: MediumTurquoise transparent transparent MediumTurquoise;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    ::-webkit-input-placeholder {
+        /* Chrome/Opera/Safari */
+        color: #d4d4d4;
+    }
+
+    ::-moz-placeholder {
+        /* Firefox 19+ */
+        color: #d4d4d4;
+    }
+
+    :-ms-input-placeholder {
+        /* IE 10+ */
+        color: #d4d4d4;
+    }
+
+    :-moz-placeholder {
+        /* Firefox 18- */
+        color: #d4d4d4;
+    }
+</style>
+
+<body class="w3-light-1grey" onload="checkUrlParam()">
+    <div class="w3-padding-64 w3-row">
+    <div class="w3-padding w3-third">
+        <input id="cnmob" class="w3-margin w3-input" type="text" placeholder="Enter 10 digit mobile number"
+            size="15">
+        <button class="w3-round-large w3-btn w3-right w3-red w3-margin-top"
+            onclick="HTTPCall_Actual()">Generate</button>
+    </div>
+    <div id='qrcodediv' class="w3-padding" style="visibility:hidden">
+        <!-- <img id='qrcode' src="" alt="qrcode" style="visibility:hidden"> -->
+        <div class="w3-cell w3-mobile">
+            <img id='qrcode' class="w3-mobile w3-round w3-card w3-padding" src="" alt="qrcode"
+                style="visibility:hidden">
+            <div class="w3-padding-32 w3-row w3-animate-left w3-center">
+                <a class="w3-button w3-green w3-padding-large w3-margin-top w3-round-xxlarge" href="#"
+                    onclick="prepHref(this)" download="CleNet_QRCode.png">
+                    <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path fill="white"
+                            d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z">
+                        </path>
+                    </svg>
+                    Download QR
+                </a>
+            </div>
         </div>
-        <div id='qrcodediv' class="w3-padding" style="visibility:hidden">
-                <!-- <img id='qrcode' src="" alt="qrcode" style="visibility:hidden"> -->
-                <img id='qrcode' class="w3-mobile w3-round w3-card w3-padding" src="" alt="qrcode" style="visibility:hidden" >
-                
-                <div class="w3-padding-64">
-                <a href="#" onclick="prepHref(this)" download="CleNet_QRCode.png">Download</a>
-        </div>
-        <script type="text/javascript">
-            function prepHref(linkElement) {
-                    var myDiv = document.getElementById('qrcodediv');
-                    var myImage = myDiv.children[0];
-                    linkElement.href = myImage.src;
-            }
-            function checkUrlParam(){
-                if(window.location.href.indexOf('?mob=')>-1){
-                  let m = window.location.href.split('?mob=')[1];
-                  if(m && parseInt(m)){
-                        document.getElementById("cnmob").value = parseInt(m);
-                        HTTPCall_Actual();
-                  }
+    </div>
+    <script type="text/javascript">
+        function prepHref(linkElement) {
+            var myDiv = document.getElementById('qrcodediv');
+            var myImage = myDiv.children[0];
+            linkElement.href = myImage.src;
+        }
+        function checkUrlParam() {
+            if (window.location.href.indexOf('?mob=') > -1) {
+                let m = window.location.href.split('?mob=')[1];
+                if (m && parseInt(m)) {
+                    document.getElementById("cnmob").value = parseInt(m);
+                    HTTPCall_Actual();
                 }
             }
+        }
+        document.getElementById("cnmob").addEventListener("keyup", function (event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                HTTPCall_Actual();
+            }
+        });
+    </script>
+</body>
 
-                document.getElementById("cnmob").addEventListener("keyup", function(event) {
-                        if (event.keyCode === 13) {
-                                event.preventDefault();
-                                HTTPCall_Actual();
-                        }
-                });
-        </script>
-    </body>
 </html>
-        
