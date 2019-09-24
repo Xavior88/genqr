@@ -202,7 +202,7 @@
     <script type="text/javascript">
         function prepHref(linkElement) {
             var myDiv = document.getElementById('qrcodediv');
-            var myImage = myDiv.children[0];
+            var myImage = myDiv.children[0].children[0];
             linkElement.href = myImage.src;
         }
         function checkUrlParam() {
